@@ -7,13 +7,27 @@ import Editor from "./Editor";
 import Preview from "./Preview";
 
 class App extends Component {
+  state = {
+    pages: {},
+    project: {}
+  };
+
+  addPage = page => {
+    // 1. Take a copy of the existing state (stop mutations)
+    const pages = { ...this.state.pages };
+    // 2. Add new page to pages variable
+    pages[`page${Date.now()}`] = page;
+    // 3. Set the new pages object to state
+    this.setState({ pages });
+  };
+
   render() {
     return (
       <div className="App">
         <Header />
         <div className="container">
           <Sidebar />
-          <Editor />
+          <Editor addPage={this.addPage} />
           <Preview />
         </div>
       </div>
