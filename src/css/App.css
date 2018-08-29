@@ -34,6 +34,10 @@ h2 {
   width: 40%;
 }
 
+.mt-15 {
+  margin-top: 15px;
+}
+
 .sidebar-wrapper {
   height: calc(100vh - 70px);
   color: #dae0e5;
