@@ -5,12 +5,25 @@ import Header from "./Header";
 import Sidebar from "./Sidebar";
 import Editor from "./Editor";
 import Preview from "./Preview";
+import base from "../base";
 
 class App extends Component {
   state = {
     pages: {},
     milestones: {}
   };
+
+  componentDidMount() {
+    const { params } = this.props.match;
+    this.ref = base.syncState(`${params.scopeId}/pages`, {
+      context: this,
+      state: "pages"
+    });
+  }
+
+  componentWillUnmount() {
+    base.removeBinding(this.ref);
+  }
 
   addPage = page => {
     // 1. Take a copy of the existing state (stop mutations)

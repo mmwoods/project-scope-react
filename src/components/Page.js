@@ -5,28 +5,10 @@ class Page extends Component {
     const { name, design, coding, total } = this.props.details;
     return (
       <div className="single-page">
-        <h2 class="section-title">{name}</h2>
-
-        <div class="menu-row mb-2">
-          <p>
-            <span class="blue-colour">Design</span>{" "}
-            <span class="pull-right">{design}</span>
-          </p>
-        </div>
-
-        <div class="menu-row mb-2">
-          <p>
-            <span class="yellow-colour">Coding</span>{" "}
-            <span class="pull-right">{coding}</span>
-          </p>
-        </div>
-
-        <div class="menu-row mb-2">
-          <p>
-            <span class="purple-colour">Total</span>{" "}
-            <span class="pull-right">{total}</span>
-          </p>
-        </div>
+        <h2 className="section-title">{name}</h2>
+        <span className="pull-right">{design}</span>
+        <span className="pull-right">{coding}</span>
+        <span className="pull-right">{total}</span>
       </div>
     );
   }
