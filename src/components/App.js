@@ -1,10 +1,8 @@
 import React, { Component } from "react";
-import logo from "../logo.svg";
 import "../css/App.css";
 import Header from "./Header";
 import Sidebar from "./Sidebar";
 import Editor from "./Editor";
-import Preview from "./Preview";
 import base from "../base";
 import Markdown from "markdown-to-jsx";
 import AceEditor from "react-ace";

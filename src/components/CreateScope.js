@@ -17,7 +17,7 @@ class CreateScope extends Component {
   render() {
     return (
       <form className="project-creator mt-15" onSubmit={this.createScope}>
-        <h2 className="text-center">Create a Scope</h2>
+        <h3 className="text-center">Create a Scope</h3>
         <input
           type="text"
           ref={this.caseNumber}
