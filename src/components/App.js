@@ -6,11 +6,17 @@ import Sidebar from "./Sidebar";
 import Editor from "./Editor";
 import Preview from "./Preview";
 import base from "../base";
+import Markdown from "markdown-to-jsx";
+import AceEditor from "react-ace";
+import brace from "brace";
+import "brace/mode/markdown";
+import "brace/theme/solarized_light";
 
 class App extends Component {
   state = {
     pages: {},
-    milestones: {}
+    milestones: {},
+    document: ""
   };
 
   componentDidMount() {
@@ -41,7 +47,18 @@ class App extends Component {
         <div className="container">
           <Sidebar pages={this.state.pages} />
           <Editor addPage={this.addPage} />
-          <Preview />
+          <AceEditor
+            mode="markdown"
+            theme="solarized_light"
+            name="markdown_editor"
+            value={this.state.document}
+            onChange={newContent => {
+              this.setState({
+                document: newContent
+              });
+            }}
+          />
+          <Markdown>{this.state.document}</Markdown>
         </div>
       </div>
     );
