@@ -9,7 +9,7 @@ import Preview from "./Preview";
 class App extends Component {
   state = {
     pages: {},
-    project: {}
+    milestones: {}
   };
 
   addPage = page => {
@@ -26,7 +26,7 @@ class App extends Component {
       <div className="App">
         <Header />
         <div className="container">
-          <Sidebar />
+          <Sidebar pages={this.state.pages} />
           <Editor addPage={this.addPage} />
           <Preview />
         </div>
