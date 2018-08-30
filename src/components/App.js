@@ -52,7 +52,10 @@ class App extends Component {
       <div className="App">
         <Header />
         <div className="container">
-          <Sidebar pages={this.state.pages} />
+          <Sidebar
+            pages={this.state.pages}
+            scopeId={this.props.match.params.scopeId}
+          />
           <Editor addPage={this.addPage} />
           <AceEditor
             mode="markdown"
