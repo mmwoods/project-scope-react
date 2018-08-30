@@ -19,10 +19,19 @@ class App extends Component {
 
   componentDidMount() {
     const { params } = this.props.match;
+    // first reinstate our localStorage
+    const localStorageRef = localStorage.getItem(params.scopeId);
+    if (localStorageRef) {
+      this.setState({ document: localStorageRef });
+    }
     this.ref = base.syncState(`${params.scopeId}/pages`, {
       context: this,
       state: "pages"
     });
+  }
+
+  componentDidUpdate() {
+    localStorage.setItem(this.props.match.params.scopeId, this.state.document);
   }
 
   componentWillUnmount() {
