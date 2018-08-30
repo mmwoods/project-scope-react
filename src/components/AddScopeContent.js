@@ -13,7 +13,6 @@ class AddScopeContent extends Component {
     const total = codingHours + designHours;
     const page = {
       name: this.nameRef.current.value,
-      type: this.typeRef.current.value,
       design: designHours,
       coding: codingHours,
       total: total,
