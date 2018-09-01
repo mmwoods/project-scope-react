@@ -20,9 +20,7 @@ class Sidebar extends Component {
 
   authHandler = async authData => {
     // 1. Look up the current scope in the firebase database
-    console.log(this);
     const scope = await base.fetch(this.props.scopeId, { context: this });
-    console.log(scope);
     // 2. Claim it if there is no owner
     if (!scope.owner) {
       // save it as our own
@@ -33,9 +31,10 @@ class Sidebar extends Component {
     // 3. Set the state of the Sidebar component to reflect the current user
     this.setState({
       uid: authData.user.uid,
-      owner: scope.owner || authData.user.uid
+      owner: scope.owner || authData.user.uid,
+      photo: authData.user.photoURL
     });
-    // console.log(authData);
+    console.log(authData);
   };
 
   authenticate = provider => {
@@ -54,7 +53,11 @@ class Sidebar extends Component {
   };
 
   render() {
-    const logout = <button onClick={this.logout}>Log Out</button>;
+    const logout = (
+      <p className="btn" onClick={this.logout}>
+        Log Out
+      </p>
+    );
     // 1. Check if they are logged in
     if (!this.state.uid) {
       return <Login authenticate={this.authenticate} />;
@@ -72,7 +75,8 @@ class Sidebar extends Component {
 
     // 3. They must be the owner, just render the Sidebar
     return (
-      <div className="sidebar-wrapper w-20 d-inline-block top">
+      <div className="sidebar-wrapper w-20 d-inline-block top text-left">
+        <img src={this.state.photo} />
         {logout}
         <ul className="pages">
           {Object.keys(this.props.pages).map(key => (

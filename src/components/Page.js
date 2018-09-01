@@ -2,14 +2,13 @@ import React, { Component } from "react";
 
 class Page extends Component {
   render() {
-    const { name, design, coding, total, cost } = this.props.details;
+    const { name, design, coding, total } = this.props.details;
     return (
       <div className="single-page">
-        <h2 className="section-title">{name}</h2>
-        <p className="pull-right">Design Hours: {design}</p>
-        <p className="pull-right">Coding Hours: {coding}</p>
-        <p className="pull-right">Total Hours: {total}</p>
-        {/* <p className="pull-right">Total Cost: ${cost}</p> */}
+        <p className="page-total d-inline-block base">{total}</p>
+        <h2 className="page-title d-inline-block base">{name}</h2>
+        {/* <p>Design Hours: {design}</p>
+        <p>Coding Hours: {coding}</p> */}
       </div>
     );
   }

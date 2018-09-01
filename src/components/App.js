@@ -50,26 +50,28 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Header />
-        <div className="container">
-          <Sidebar
-            pages={this.state.pages}
-            scopeId={this.props.match.params.scopeId}
-          />
+        <Sidebar
+          pages={this.state.pages}
+          scopeId={this.props.match.params.scopeId}
+        />
+        <div className="main-content d-inline-block top w-80">
+          <Header />
           <Editor addPage={this.addPage} />
-          <AceEditor
-            mode="markdown"
-            theme="solarized_light"
-            name="markdown_editor"
-            value={this.state.document}
-            onChange={newContent => {
-              this.setState({
-                document: newContent
-              });
-            }}
-          />
-          <Markdown>{this.state.document}</Markdown>
+          <div className="markdown d-inline-block top p-35">
+            <Markdown>{this.state.document}</Markdown>
+          </div>
         </div>
+        <AceEditor
+          mode="markdown"
+          theme="solarized_light"
+          name="markdown_editor"
+          value={this.state.document}
+          onChange={newContent => {
+            this.setState({
+              document: newContent
+            });
+          }}
+        />
       </div>
     );
   }
