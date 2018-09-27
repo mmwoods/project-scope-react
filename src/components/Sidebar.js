@@ -36,6 +36,12 @@ class Sidebar extends Component {
       name: authData.user.displayName
     });
     console.log(authData);
+    // 4. Store total users
+    await base.post(`users/${authData.user.uid}`, {
+      data: {
+        name: authData.user.displayName
+      }
+    });
   };
 
   authenticate = provider => {
