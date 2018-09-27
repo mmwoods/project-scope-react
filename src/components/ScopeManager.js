@@ -14,10 +14,10 @@ class ScopeManager extends Component {
   };
 
   componentDidMount() {
-    this.ref = base.bindToState(`1234`, {
+    this.ref = base.bindToState(`scopes`, {
       context: this,
       state: "scopes",
-      asArray: true
+      asArray: false
     });
   }
 

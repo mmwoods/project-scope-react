@@ -24,15 +24,16 @@ class Sidebar extends Component {
     // 2. Claim it if there is no owner
     if (!scope.owner) {
       // save it as our own
-      await base.post(`${this.props.scopeId}/owner`, {
-        data: authData.user.uid
+      await base.post(`scopes/${this.props.scopeId}/owner`, {
+        data: authData.user.displayName
       });
     }
     // 3. Set the state of the Sidebar component to reflect the current user
     this.setState({
       uid: authData.user.uid,
       owner: scope.owner || authData.user.uid,
-      photo: authData.user.photoURL
+      photo: authData.user.photoURL,
+      name: authData.user.displayName
     });
     console.log(authData);
   };

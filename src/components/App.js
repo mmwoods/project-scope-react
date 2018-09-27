@@ -24,7 +24,7 @@ class App extends Component {
     if (localStorageRef) {
       this.setState({ document: localStorageRef });
     }
-    this.ref = base.syncState(`${params.scopeId}/pages`, {
+    this.ref = base.syncState(`scopes/${params.scopeId}/pages`, {
       context: this,
       state: "pages"
     });
