@@ -51,6 +51,16 @@ class App extends Component {
     base.removeBinding(this.ref);
   }
 
+  documentSave = async versionNumber => {
+    const { params } = this.props.match;
+    // 3. Store document
+    await base.post(`documents/${params.scopeId}/`, {
+      data: {
+        content: this.state.document
+      }
+    });
+  };
+
   addPage = page => {
     // 1. Take a copy of the existing state (stop mutations)
     const pages = { ...this.state.pages };
@@ -217,6 +227,8 @@ class App extends Component {
           scopeId={this.props.match.params.scopeId}
           pages={this.state.pagesCalculated}
           totals={this.state.totals}
+          history={this.props.history}
+          documentSave={this.documentSave}
         />
         <div className="main-content d-inline-block top w-80">
           <Header />

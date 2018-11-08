@@ -10,6 +10,11 @@ class Sidebar extends Component {
     owner: null
   };
 
+  goHome = scopeName => {
+    // Change the page
+    this.props.history.push(`/`);
+  };
+
   componentDidMount() {
     firebase.auth().onAuthStateChanged(user => {
       if (user) {
@@ -83,6 +88,8 @@ class Sidebar extends Component {
     // 3. They must be the owner, just render the Sidebar
     return (
       <div className="sidebar-wrapper w-20 d-inline-block top text-left">
+        <p onClick={this.goHome}>Home</p>
+        <p onClick={() => this.props.documentSave('v1')}>Save Version</p>
         <img src={this.state.photo} />
         {logout}
         <ul className="pages">
