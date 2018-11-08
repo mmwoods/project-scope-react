@@ -89,6 +89,12 @@ class Sidebar extends Component {
           {Object.keys(this.props.pages).map(key => (
             <Page key={key} details={this.props.pages[key]} />
           ))}
+          <div className="single-page">
+            <h2 className="page-title d-inline-block base">Total</h2>
+            <p>Design: {this.props.totals.design}</p>
+            <p>Coding: {this.props.totals.coding}</p>
+            <p>Total: {this.props.totals.total}</p>
+          </div>
         </ul>
       </div>
     );

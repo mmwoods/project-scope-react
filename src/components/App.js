@@ -16,7 +16,13 @@ class App extends Component {
     pagesCalculated: {},
     milestones: {},
     document: "",
-    doc: {}
+    segments: {},
+    totals: {
+      coding: 0,
+      design: 0,
+      total: 0,
+      cost: 0
+    }
   };
 
   componentDidMount() {
@@ -28,11 +34,16 @@ class App extends Component {
     }
     this.ref = base.syncState(`scopes/${params.scopeId}/pages`, {
       context: this,
-      state: "pages"
+      state: "pagesCalculated"
+    });
+    this.ref = base.syncState(`scopes/${params.scopeId}/totals`, {
+      context: this,
+      state: "totals"
     });
   }
 
   componentDidUpdate() {
+    console.log('update');
     localStorage.setItem(this.props.match.params.scopeId, this.state.document);
   }
 
@@ -58,7 +69,7 @@ class App extends Component {
     console.log(segmentArray);
 
     this.setState({
-      doc: segmentArray
+      segments: segmentArray
     });
 
     function returnTime(input) {
@@ -151,15 +162,11 @@ class App extends Component {
           // Segment Output
           if (h2 !== undefined) {
               return {
-                  title: h2,
-                  hours: {
-                      coding: totalHours(commentObject).coding + totalHours(lineObject).coding,
-                      design: totalHours(commentObject).design + totalHours(lineObject).design,
-                      total: totalHours(commentObject).total + totalHours(lineObject).total
-                  },
-                  subHeadings: subHeadingObject,
-                  comments: commentObject,
-                  content: lineObject,
+                  name: h2,
+                  coding: totalHours(commentObject).coding + totalHours(lineObject).coding,
+                  design: totalHours(commentObject).design + totalHours(lineObject).design,
+                  total: totalHours(commentObject).total + totalHours(lineObject).total,
+                  cost: (totalHours(commentObject).total + totalHours(lineObject).total) * 160
               };
           }
       });
@@ -172,16 +179,44 @@ class App extends Component {
     var scopeArray = createScope(segmentArray);
     console.log(scopeArray);
     this.setState({
-      pagesCalculated: scopeArray
+      pagesCalculated: scopeArray,
+      totals: calculateScopeTotals(scopeArray)
     });
+
+    function calculateScopeTotals(scopeArray) {
+      var coding = 0;
+      var design = 0;
+
+      for (var i = 0; i < scopeArray.length; i++) {
+        var itemCoding = scopeArray[i].coding;
+        var itemDesign = scopeArray[i].design;
+
+        if (itemCoding > 0) {
+          coding += itemCoding;
+        }
+        if (itemDesign > 0) {
+          design += itemDesign;
+        }
+      }
+      var total = coding + design;
+      var cost = total * 160;
+
+      return {
+        coding: coding,
+        design: design,
+        total: total,
+        cost: cost
+      }
+    }
   }
 
   render() {
     return (
       <div className="App">
         <Sidebar
-          pages={this.state.pages}
           scopeId={this.props.match.params.scopeId}
+          pages={this.state.pagesCalculated}
+          totals={this.state.totals}
         />
         <div className="main-content d-inline-block top w-80">
           <Header />

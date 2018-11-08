@@ -5,10 +5,10 @@ class Page extends Component {
     const { name, design, coding, total } = this.props.details;
     return (
       <div className="single-page">
-        <p className="page-total d-inline-block base">{total}</p>
         <h2 className="page-title d-inline-block base">{name}</h2>
-        {/* <p>Design Hours: {design}</p>
-        <p>Coding Hours: {coding}</p> */}
+        <p>Design: {design}</p>
+        <p>Coding: {coding}</p>
+        <p>Total: {total}</p>
       </div>
     );
   }
