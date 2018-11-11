@@ -1,4 +1,32 @@
 import React, { Component } from "react";
+import styled from 'styled-components';
+
+const MyInput = styled.input`
+  width: calc(100% - 85px);
+  padding: 10px;
+  margin: 10px 0 0 10px;
+  display: inline-block;
+  vertical-align: top;
+`
+
+const MyButton = styled.button`
+  border: 0;
+  background: #6578FE;
+  color: #fff;
+  display: inline-block;
+  vertical-align: top;
+  width: 40px;
+  margin: 10px 10px 0 0;
+  height: 37px;
+  font-size: 24px;
+  line-height: 24px;
+  font-weight: 300;
+
+  :hover {
+    cursor: pointer;
+    opacity: 0.8;
+  }
+`
 
 class CreateScope extends Component {
   caseNumber = React.createRef();
@@ -16,18 +44,16 @@ class CreateScope extends Component {
 
   render() {
     return (
-      <form className="project-creator mt-15" onSubmit={this.createScope}>
-        <h3 className="text-center">Create a Scope</h3>
-        <input
+      <form className="project-creator" onSubmit={this.createScope}>
+        <MyInput
           type="text"
           ref={this.caseNumber}
           required
-          defaultValue="1234"
+          defaultValue="Scope Name"
           placeholder="Case Number"
           className="mt-15"
         />
-        <input type="text" placeholder="Company Name" />
-        <button type="submit">Create Project</button>
+        <MyButton type="submit">+</MyButton>
       </form>
     );
   }

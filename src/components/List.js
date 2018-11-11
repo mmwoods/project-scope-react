@@ -2,12 +2,14 @@ import React, { Component } from "react";
 import styled from 'styled-components';
 
 const MyTitle = styled.div`
-  width: auto;
-  border: 1px solid #dfdfdf;
-  border-radius: 10px;
+  width: 100%;
   text-align: left;
-  margin: 10px 10px;
+  margin: 0 10px;
   padding: 20px;
+  border: 1px solid transparent;
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid #dfdfdf;
 
   :hover {
     cursor: pointer;
@@ -15,18 +17,18 @@ const MyTitle = styled.div`
   }
 
   h1 {
-    font-size: 16px;
-    margin-bottom: 5px;
+    font-size: 14px;
+    margin-bottom: 0;
     font-weight: 400;
+    width: 100px;
   }
   p {
-    font-size: 12px;
-    color: #aaa;
+    font-size: 14px;
     margin: 0;
   }
 }
 `
-class Title extends Component {
+class List extends Component {
 
   openScope = event => {
     const scopeId = this.props.scopeId;
@@ -37,10 +39,13 @@ class Title extends Component {
     return (
       <MyTitle onClick={this.openScope}>
         <h1>{this.props.scopeId}</h1>
-        <p>Edited by {this.props.details.owner}</p>
+        <p>Coding {this.props.details.totals.coding}</p>
+        <p>Design {this.props.details.totals.design}</p>
+        <p>Total {this.props.details.totals.total}</p>
+        <p>Cost ${this.props.details.totals.cost}</p>
       </MyTitle>
     );
   }
 }
 
-export default Title;
+export default List;

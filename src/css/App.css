@@ -124,20 +124,6 @@ body {
   justify-content: center;
 }
 
-.single-title {
-  width: 200px;
-  border: 1px solid #dfdfdf;
-  border-radius: 10px;
-  text-align: center;
-  margin: 10px 20px;
-  padding: 20px;
-}
-
-.single-title:hover {
-  cursor: pointer;
-  border: 1px solid #015efd;
-}
-
 /* --- Feature Notes --- */
 .markdown {
   height: calc(100% - 70px);

@@ -1,7 +1,28 @@
 import React, { Component } from "react";
 import CreateScope from "./CreateScope";
+import ScopeGrid from "./ScopeGrid";
 import ScopeList from "./ScopeList";
 import base from "../base";
+import styled from 'styled-components';
+import MyHeader from '../components/styles/HeaderStyles';
+
+const ManagerContainer = styled.div`
+  background-color: #F8F8F8;
+  margin-top: 15px;
+  text-align: center;
+  width: 80%;
+`
+
+const MySidebar = styled.div`
+  width: 20%;
+  border-right: 1px solid #dfdfdf;
+  height: 100vh;
+`
+
+const FlexContainer = styled.div`
+  display: flex;
+  justify-content: center;
+`
 
 class ScopeManager extends Component {
   state = {
@@ -27,10 +48,19 @@ class ScopeManager extends Component {
 
   render() {
     return (
-      <div className="text-center mt-15">
-        <h2 className="text-center">Scope Manager</h2>
-        <CreateScope goToScope={this.goToScope} />
-        <ScopeList goToScope={this.goToScope} scopes={this.state.scopes} />
+      <div>
+        <MyHeader>
+          <h1>Scope Manager</h1>
+        </MyHeader>
+        <FlexContainer>
+          <MySidebar>
+            <CreateScope goToScope={this.goToScope} />
+          </MySidebar>
+          <ManagerContainer>
+            <ScopeGrid goToScope={this.goToScope} scopes={this.state.scopes} />
+            <ScopeList goToScope={this.goToScope} scopes={this.state.scopes} />
+          </ManagerContainer>
+        </FlexContainer>
       </div>
     );
   }

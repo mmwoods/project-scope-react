@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import List from "./List";
+import Title from "./Title";
 import styled from 'styled-components';
 
 const FlexContainer = styled.div`
@@ -9,14 +9,14 @@ const FlexContainer = styled.div`
   padding: 0 10px;
 `
 
-class ScopeList extends Component {
+class ScopeGrid extends Component {
   render() {
     return (
       <div>
         <FlexContainer>
           <p>{this.props.key}</p>
           {Object.keys(this.props.scopes).map(key => (
-            <List key={key} details={this.props.scopes[key]} scopeId={key} goToScope={this.props.goToScope} />
+            <Title key={key} details={this.props.scopes[key]} scopeId={key} goToScope={this.props.goToScope} />
           ))}
         </FlexContainer>
         <div className="text-center mt-15 d-flex justify-content-center">
@@ -26,4 +26,4 @@ class ScopeList extends Component {
   }
 }
 
-export default ScopeList;
+export default ScopeGrid;

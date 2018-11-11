@@ -40,7 +40,6 @@ class Sidebar extends Component {
       photo: authData.user.photoURL,
       name: authData.user.displayName
     });
-    console.log(authData);
     // 4. Store total users
     await base.post(`users/${authData.user.uid}`, {
       data: {
