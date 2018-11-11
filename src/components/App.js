@@ -232,20 +232,24 @@ class App extends Component {
         />
         <div className="main-content d-inline-block top w-80">
           <Header />
-          <Editor addPage={this.addPage} />
-          <div className="markdown d-inline-block top p-35">
+          <div className="markdown d-inline-block top">
             <Markdown>{this.state.document}</Markdown>
           </div>
+          <div>
+            <AceEditor
+              mode="markdown"
+              theme="ace-chrome"
+              name="markdown_editor"
+              height='calc(100vh - 70px)'
+              width= '50%'
+              wrapEnabled= {true}
+              value={this.state.document}
+              onChange={newContent => {
+                this.onEditorChange(newContent)
+              }}
+            />
+          </div>
         </div>
-        <AceEditor
-          mode="markdown"
-          theme="solarized_light"
-          name="markdown_editor"
-          value={this.state.document}
-          onChange={newContent => {
-            this.onEditorChange(newContent)
-          }}
-        />
       </div>
     );
   }
