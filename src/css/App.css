@@ -124,6 +124,28 @@ body {
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
+.d-flex {
+  display: flex;
+}
+
+.justify-content-center {
+  justify-content: center;
+}
+
+.single-title {
+  width: 200px;
+  border: 1px solid #dfdfdf;
+  border-radius: 10px;
+  text-align: center;
+  margin: 10px 20px;
+  padding: 20px;
+}
+
+.single-title:hover {
+  cursor: pointer;
+  border: 1px solid #015efd;
+}
+
 /* --- Feature Notes --- */
 .markdown {
   height: calc(100% - 275px);

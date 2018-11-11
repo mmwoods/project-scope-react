@@ -30,7 +30,7 @@ class ScopeManager extends Component {
       <div className="text-center mt-15">
         <h2 className="text-center">Scope Manager</h2>
         <CreateScope goToScope={this.goToScope} />
-        <ScopeList scopes={this.state.scopes} />
+        <ScopeList goToScope={this.goToScope} scopes={this.state.scopes} />
       </div>
     );
   }
