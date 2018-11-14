@@ -4,6 +4,7 @@ import styled from 'styled-components';
 const MyTitle = styled.div`
   width: auto;
   border: 1px solid #dfdfdf;
+  background-color: #fff;
   border-radius: 10px;
   text-align: left;
   margin: 10px 10px;

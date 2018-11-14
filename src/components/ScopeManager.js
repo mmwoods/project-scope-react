@@ -8,7 +8,7 @@ import MyHeader from '../components/styles/HeaderStyles';
 
 const ManagerContainer = styled.div`
   background-color: #F8F8F8;
-  margin-top: 15px;
+  padding-top: 15px;
   text-align: center;
   width: 80%;
 `
